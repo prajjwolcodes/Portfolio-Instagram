@@ -8,7 +8,6 @@ import { FaHeart, FaDatabase, FaComment, FaShare, FaTimes, FaBookmark } from 're
 import { FaJs, FaServer, FaHtml5, FaPython, FaCss3Alt, FaJava, FaReact, FaNodeJs, FaJira, FaLinux, FaAws, FaGitAlt, FaDocker, FaFigma } from 'react-icons/fa';
 import { SiPostgresql, SiNextdotjs, SiBootstrap, SiGraphql, SiMongodb, SiRedis, SiJenkins, SiTailwindcss, SiDevexpress, SiSpringboot } from 'react-icons/si';
 import Language from '../../Assets/languages.png';
-import devops from '../../Assets/devops.png';
 import framework from '../../Assets/framework.png';
 import database from '../../Assets/database.png';
 import others from '../../Assets/others.png';
@@ -20,7 +19,6 @@ const categories = [
     { title: 'Frameworks', icon: <FaReact size={60} />, image: framework },
     { title: 'Databases', icon: <SiPostgresql size={60} />, image: database },
     { title: 'Other', icon: <FaGitAlt size={60} />, image: others },
-    { title: 'DevOps', icon: <FaAws size={60} />, image: devops },
     { title: 'Tools', icon: <FaFigma size={60} />, image: tools },
 ];
 
@@ -38,13 +36,7 @@ const skills = {
             color: '#306998'
         },
         {
-            name: 'Java',
-            icon: <FaJava size={40} />,
-            color: '#007396',
-            specialized: true
-        },
-        {
-            name: 'HTML',
+            name: 'HTML5',
             icon: <FaHtml5 size={40} />,
             color: '#E34F26',
         },
@@ -80,12 +72,6 @@ const skills = {
             specialized: true
         },
         {
-            name: 'Spring Boot',
-            icon: <SiSpringboot size={40} />,
-            color: '#6DB33F',
-            specialized: true
-        },
-        {
             name: 'Node.js',
             icon: <FaNodeJs size={40} />,
             color: '#68A063',
@@ -113,17 +99,6 @@ const skills = {
         {
             name: 'SQL',
             icon: <FaDatabase size={40} />,
-            color: '#336791'
-        },
-        {
-            name: 'Redis',
-            icon: <SiRedis size={40} />,
-            color: '#DC382D',
-            specialized: true
-        },
-        {
-            name: 'PostgreSQL',
-            icon: <SiPostgresql size={40} />,
             color: '#336791'
         },
     ],
@@ -154,42 +129,6 @@ const skills = {
             color: '#FF5722'
         },
     ],
-    DevOps: [
-        {
-            name: 'Docker',
-            icon: <FaDocker size={40} />,
-            color: '#0db7ed',
-            specialized: true
-        },
-        {
-            name: 'AWS S3',
-            icon: <FaAws size={40} />,
-            color: '#FF9900',
-            specialized: true
-        },
-        {
-            name: 'AWS EC2',
-            icon: <FaAws size={40} />,
-            color: '#FF9900',
-            specialized: true
-        },
-        {
-            name: 'AWS SNS',
-            icon: <FaAws size={40} />,
-            color: '#FF9900'
-        },
-        {
-            name: 'AWS SES',
-            icon: <FaAws size={40} />,
-            color: '#FF9900',
-            specialized: true
-        },
-        {
-            name: 'Jenkins',
-            icon: <SiJenkins size={40} />,
-            color: '#D24939'
-        },
-    ],
     Tools: [
         {
             name: 'Git',
@@ -208,11 +147,7 @@ const skills = {
             color: '#A259FF',
             specialized: true
         },
-        {
-            name: 'Jira',
-            icon: <FaJira size={40} />,
-            color: '#0052CC'
-        },
+
     ],
 };
 const SkillsSection = ({ darkMode }) => {
@@ -273,7 +208,7 @@ const SkillsSection = ({ darkMode }) => {
                         key={index}
                         variants={itemVariants}
                         onClick={() => setSelectedCategory(category)}
-                        className={`relative cursor-pointer group ${darkMode ? 'border-2 rounded-none border-gray-400' : 'border-gray-900'}`}
+                        className={`relative cursor-pointer object-contain group ${darkMode ? 'border-2 rounded-none border-gray-400' : 'border-gray-900'}`}
                         style={{ aspectRatio: '1 / 1' }}
                     >
                         <motion.div
@@ -282,7 +217,7 @@ const SkillsSection = ({ darkMode }) => {
                             transition={{ duration: 0.3 }}
                             style={{ backgroundImage: `url(${category.image})`, backgroundSize: 'cover', position: 'relative' }}
                         >
-                            <div className="absolute inset-0 bg-black opacity-40 rounded-xl"></div>
+                            <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
                         </motion.div>
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center group-hover:bg-opacity-60 transition-opacity rounded-xl"

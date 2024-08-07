@@ -55,7 +55,7 @@ const HomeSection = ({ setActiveSection, darkMode }) => {
                     key={index}
                     variants={itemVariants}
                     onClick={() => setActiveSection(section.title)}
-                    className={`relative group border ${darkMode ? 'border-gray-700' : 'border-gray-300'} rounded-lg flex items-center justify-center overflow-hidden`}
+                    className={`relative group border ${darkMode ? 'border-gray-700' : 'border-gray-300'} rounded-lg flex items-center justify-center overflow-hidden cursor-pointer`}
                     style={{ aspectRatio: '1 / 1' }} // Ensures the divs are square
                 >
                     <div className="flex flex-col items-center">
@@ -64,7 +64,6 @@ const HomeSection = ({ setActiveSection, darkMode }) => {
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity"
                         >
-                            <h2 className="text-lg font-bold text-white">{section.title}</h2>
                         </motion.div>
                     </div>
                 </motion.div>
