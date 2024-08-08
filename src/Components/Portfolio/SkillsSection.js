@@ -193,7 +193,7 @@ const SkillsSection = ({ darkMode }) => {
     };
 
     return (
-        <div className={`pb-4  ${darkMode ? 'bg-black text-gray-400' : 'bg-white text-black'}`}>
+        <div className={`pb-4  ${darkMode ? 'bg-black text-gray-300' : 'bg-white text-black'}`}>
             {/* <h2 className="text-3xl font-bold  text-center">Skills</h2> */}
 
             <motion.div
@@ -212,7 +212,7 @@ const SkillsSection = ({ darkMode }) => {
                         style={{ aspectRatio: '1 / 1' }}
                     >
                         <motion.div
-                            className={`w-full h-full flex items-center justify-center ${darkMode ? 'bg-black text-gray-600 border-gray-400' : 'bg-white text-black'} rounded-md`}
+                            className={`w-full h-full flex items-center justify-center ${darkMode ? 'bg-black text-white border-gray-400' : 'bg-white text-black'} rounded-md`}
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3 }}
                             style={{ backgroundImage: `url(${category.image})`, backgroundSize: 'cover', position: 'relative' }}
@@ -222,7 +222,7 @@ const SkillsSection = ({ darkMode }) => {
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center group-hover:bg-opacity-60 transition-opacity rounded-xl"
                         >
-                            <h2 className="text-xl font-bold text-gray-200 opacity-0 group-hover:opacity-100">{category.title}</h2>
+                            <h2 className="text-2xl font-bold text-gray-200 opacity-0 group-hover:opacity-100">{category.title}</h2>
                         </motion.div>
                     </motion.div>
                 ))}
@@ -256,7 +256,7 @@ const SkillsSection = ({ darkMode }) => {
                         <Slider {...carouselSettings}>
                             {skills[selectedCategory.title].map((skill, index) => (
                                 <div key={index} className="p-4">
-                                    <div className="flex flex-col items-center mb-4">
+                                    <div className="flex flex-col items-center">
                                         <div className="mb-2 text-center">
                                             {skill.icon ? (
                                                 <motion.div
@@ -290,7 +290,7 @@ const SkillsSection = ({ darkMode }) => {
                             </div>
                             <FaBookmark className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                         </div>
-                        <p className="text-sm mb-2"><span className="font-semibold text-lg">{selectedCategory.title} :</span> View the comments for quick summary <span className="text-blue-500">#{selectedCategory.title}</span></p>
+                        <p className="text-sm mb-2"><span className="font-semibold">{selectedCategory.title} :</span> View the comments for quick summary <span className="text-blue-500">#{selectedCategory.title}</span></p>
 
                         {/* Comments Section */}
                         <div className="mb-4">

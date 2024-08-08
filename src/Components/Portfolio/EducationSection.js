@@ -9,7 +9,8 @@ import e1 from '../../Assets/e1.jpg';
 import e2 from '../../Assets/e2.jpg';
 import e3 from '../../Assets/e3.jpg';
 import e4 from '../../Assets/e4.png';
-import emu from '../../Assets/emu.jpg'
+import khwopa from '../../Assets/khwopa.png'
+import ascol from '../../Assets/ascol.png'
 
 const educationData = [
     {
@@ -32,7 +33,31 @@ const educationData = [
         ]
         ,
         images: [
-            emu, e1, e2, e3, e4
+            khwopa, e1, e2, e3, e4
+        ],
+        caption: '🌟View comments for more details',
+    },
+    {
+        institution: 'Eastern Michigan University 🏫',
+        degree: 'Bachelor of Science in Computer Science 🎓',
+        major: 'Computer Science 💻',
+        minor: 'Mathematics 📐',
+        GPA: '3.87 ⭐',
+        startYear: 2022,
+        endYear: 2026,
+        courses: [
+            'Data Structures 📚',
+            'Algorithms 🧠',
+            'Web Development 📄',
+            'Front-End Development (HTML, CSS, JavaScript) 🌐',
+            'Back-End Development (Node.js, Express.js) 🔧',
+            'API Design and Development 🧩',
+            'Cloud Computing (AWS, Azure, Google Cloud) ☁️',
+            'Version Control (Git, GitHub) 🔄'
+        ]
+        ,
+        images: [
+            ascol, e1, e2, e3, e4
         ],
         caption: '🌟View comments for more details',
     },
@@ -71,12 +96,12 @@ const EducationSection = ({ darkMode }) => {
                             transition={{ duration: 0.3 }}
                             style={{ backgroundImage: `url(${education.images[0]})`, backgroundSize: 'cover', width: '100%' }}
                         >
-                            <div className="absolute inset-0 bg-black opacity-40 rounded-xl"></div>
+                            <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
                         </motion.div>
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center group-hover:bg-opacity-60 transition-opacity rounded-xl"
                         >
-                            <h2 className="text-xl font-bold text-gray-200 opacity-0 group-hover:opacity-100 text-center">{education.institution}</h2>
+                            <h2 className="text-2xl font-bold text-gray-200 opacity-0 group-hover:opacity-100 text-center">{education.institution}</h2>
                         </motion.div>
                     </motion.div>
                 ))}

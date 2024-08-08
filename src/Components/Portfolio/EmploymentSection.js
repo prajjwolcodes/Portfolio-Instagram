@@ -24,34 +24,9 @@ const experiences = [
         link: 'https://shopatbanau.com',
         bgImage: dev,
     },
+
     {
-        title: 'CEO and Founder',
-        company: 'Saika Nepal',
-        date: 'March 2024 - Present',
-        location: 'Kathmandu, Nepal',
-        description: [
-            '🚀 Launched Saika Nepal, a startup specializing in web and software development using React.js and Express.js.',
-            '💻 Crafted a professional corporate landing page with responsive UI/UX design, which achieved a conversion rate of 35%.',
-            '🌐 Represented the company at industry conferences, successfully securing 5 new projects and enhancing business reach.',
-        ],
-        link: 'https://saikanepal.com',
-        bgImage: CEO,
-    },
-    {
-        title: 'Java Teacher Assistant',
-        company: 'Department of Computer Science, Eastern Michigan University',
-        date: 'Jan 2022 – Aug -2022',
-        location: 'Ypsilanti, MI, USA',
-        description: [
-            '📚 Addressed individual review sessions to enhance student’s understanding of Algorithm and Data Structure',
-            '🤝 Collaborated with the professor to align coursework with curriculum objectives, resulting in a 17% grade increase.',
-            '👨‍🏫 Provided post-class Java tutoring to reinforce OOP concepts, leading to a 25% increase in timely project completions',
-        ],
-        link: '',
-        bgImage: TA,
-    },
-    {
-        title: 'Technical Support Specialist',
+        title: 'Freelancer',
         company: 'Department of Information Technology, Eastern Michigan University',
         date: 'Aug 2022 – Jan 2024',
         location: 'Ypsilanti, MI, USA',
@@ -63,7 +38,20 @@ const experiences = [
         link: '',
         bgImage: IT,
     },
-   
+    {
+        title: 'Intern',
+        company: 'Department of Computer Science, Eastern Michigan University',
+        date: 'Jan 2022 – Aug -2022',
+        location: 'Ypsilanti, MI, USA',
+        description: [
+            '📚 Addressed individual review sessions to enhance student’s understanding of Algorithm and Data Structure',
+            '🤝 Collaborated with the professor to align coursework with curriculum objectives, resulting in a 17% grade increase.',
+            '👨‍🏫 Provided post-class Java tutoring to reinforce OOP concepts, leading to a 25% increase in timely project completions',
+        ],
+        link: '',
+        bgImage: TA,
+    },
+
 ];
 
 const ExperienceSection = ({ darkMode }) => {
@@ -137,12 +125,12 @@ const ExperienceSection = ({ darkMode }) => {
                                 position: 'relative'
                             }}
                         >
-                            <div className="absolute inset-0 bg-black opacity-40 rounded-xl"></div>
+                            <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
                         </motion.div>
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center group-hover:bg-opacity-60 transition-opacity rounded-xl"
                         >
-                            <h2 className="text-xl font-bold text-gray-200 opacity-0 group-hover:opacity-100">{experience.title}</h2>
+                            <h2 className="text-2xl font-bold text-gray-200 opacity-0 group-hover:opacity-100">{experience.title}</h2>
                         </motion.div>
                     </motion.div>
                 ))}

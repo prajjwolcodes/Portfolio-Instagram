@@ -11,7 +11,7 @@ import Project2 from '../../Assets/CEO.png';
 import Project3 from '../../Assets/CEO.png';
 
 //saika nepal
-import s0 from '../../Assets/Saika/s0.png';
+import saika from '../../Assets/Saika/saika.png';
 import s1 from '../../Assets/Saika/s1.png';
 import s2 from '../../Assets/Saika/s2.png';
 import s3 from '../../Assets/Saika/s3.png';
@@ -20,7 +20,7 @@ import s5 from '../../Assets/Saika/s5.png';
 import s6 from '../../Assets/Saika/s6.png';
 
 //shopat banau
-import b00 from '../../Assets/Banau/b00.png';
+import banau from '../../Assets/Banau/banau.png';
 import b0 from '../../Assets/Banau/b0.png';
 import b1 from '../../Assets/Banau/b1.png';
 import b2 from '../../Assets/Banau/b2.png';
@@ -35,10 +35,10 @@ import b10 from '../../Assets/Banau/b10.png';
 import b11 from '../../Assets/Banau/b11.png';
 
 //cs2
-import cs2 from '../../Assets/cs2/cs2.jpg'
+import chatapp from '../../Assets/chatapp.png'
 
 //valley
-import valley from '../../Assets/valley/valley.jpg'
+import movieapp from '../../Assets/movieapp.png'
 
 //LIA
 import LIA from '../../Assets/LIA/LIA.jpg'
@@ -66,7 +66,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://shopatbanau.com',
             github: 'https://github.com/saikanepal/epasal_front',
             githubServer: 'Private',
-            images: [b00, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11],
+            images: [banau, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11],
             techStack: [<SiReact title="React" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />]
         },
         {
@@ -82,7 +82,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://saikanepal.com',
             github: 'https://github.com/saikanepal/Saika_Nepal_Front_end',
             githubServer: 'Private',
-            images: [s0, s1, s2, s3, s4, s5, s6],
+            images: [saika, s1, s2, s3, s4, s5, s6],
             techStack: [<SiReact title="React" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiFigma title="Figma" />]
         },
         {
@@ -98,7 +98,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://cstogether.netlify.app',
             github: 'https://github.com/skarn03/cstog',
             githubServer: 'https://github.com/skarn03/cstogback',
-            images: [cs2, cs2],
+            images: [chatapp, chatapp],
             techStack: [<SiNextdotjs title="Next.js" />, <SiSpringboot title="Spring Boot" />, <SiMongodb title="MongoDB" />]
         },
         {
@@ -114,24 +114,8 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://vall3y.netlify.app',
             github: 'https://github.com/skarn03/Valley_Client-',
             githubServer: 'https://github.com/skarn03/Valley/tree/main/server',
-            images: [valley, valley],
+            images: [movieapp, movieapp],
             techStack: [<SiReact title="React" />, <SiBootstrap title="Bootstrap" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiSocketdotio title="Socket.io" />]
-        },
-        {
-            title: 'Learn It All',
-            date: 'March 2022 - April 2022',
-            location: 'Offline',
-            description: [
-                '💬 **Learn It All** is a chatroom web application designed for instant topic discussion. With a seamless user interface built using React and Tailwind CSS, it features a robust backend with Node.js and Express.js, coupled with a NoSQL database.',
-                '🗣 Created a platform for users to join chatrooms and discuss various topics, implementing a clean and responsive UI with React and Tailwind CSS.',
-                '🌟 Implemented a real-time chat system using WebSocket or similar technology, ensuring real-time messaging with a user-friendly interface.',
-                '🔒 Developed a robust backend with Node.js and Express.js to handle user authentication, chat functionality, and data storage, integrating MongoDB for database management.',
-            ],
-            link: 'https://learnitall.netlify.app',
-            github: 'https://github.com/skarn03/LIA-MERN-CLIENT',
-            githubServer: 'https://github.com/skarn03/LIA-MERN',
-            images: [LIA, LIA],
-            techStack: [<SiReact title="React" />, <SiTailwindcss title="Tailwind CSS" />, <SiNodedotjs title="Node.js" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />]
         },
     ];
 
@@ -203,12 +187,12 @@ const ProjectSection = ({ darkMode }) => {
                                 position: 'relative'
                             }}
                         >
-                            <div className="absolute inset-0 bg-black opacity-40 rounded-xl"></div>
+                            <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
                         </motion.div>
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center group-hover:bg-opacity-60 transition-opacity rounded-xl"
                         >
-                            <h2 className="text-xl font-bold text-gray-200 opacity-0 group-hover:opacity-100">{project.title}</h2>
+                            <h2 className="text-2xl font-bold text-gray-200 opacity-0 group-hover:opacity-100">{project.title}</h2>
                         </motion.div>
                     </motion.div>
                 ))}
