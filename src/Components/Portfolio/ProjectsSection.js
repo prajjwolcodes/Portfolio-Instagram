@@ -4,14 +4,13 @@ import { useInView } from 'react-intersection-observer';
 import Carousel from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { FaArrowRight, FaGithub, FaUser, FaHeart, FaComment, FaShare, FaTimes, FaBookmark, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiReact, SiExpress, SiMongodb, SiFigma, SiNextdotjs, SiSpringboot, SiBootstrap, SiSocketdotio, SiTailwindcss, SiNodedotjs } from 'react-icons/si';
-import Project1 from '../../Assets/CEO.png';
-import Project2 from '../../Assets/CEO.png';
-import Project3 from '../../Assets/CEO.png';
+import { FaGithub, FaUser, FaHeart, FaComment, FaShare, FaTimes, FaBookmark, FaExternalLinkAlt } from 'react-icons/fa';
+import { SiReact, SiExpress, SiMongodb, SiFigma, SiNextdotjs, SiSpringboot, SiBootstrap, SiSocketdotio } from 'react-icons/si';
+
 
 //saika nepal
 import saika from '../../Assets/Saika/saika.png';
+import saika1 from '../../Assets/Saika/saika1.png';
 import s1 from '../../Assets/Saika/s1.png';
 import s2 from '../../Assets/Saika/s2.png';
 import s3 from '../../Assets/Saika/s3.png';
@@ -21,6 +20,7 @@ import s6 from '../../Assets/Saika/s6.png';
 
 //shopat banau
 import banau from '../../Assets/Banau/banau.png';
+import banau1 from '../../Assets/Banau/banau1.png';
 import b0 from '../../Assets/Banau/b0.png';
 import b1 from '../../Assets/Banau/b1.png';
 import b2 from '../../Assets/Banau/b2.png';
@@ -36,12 +36,13 @@ import b11 from '../../Assets/Banau/b11.png';
 
 //cs2
 import chatapp from '../../Assets/chatapp.png'
+import chatapp1 from '../../Assets/chatapp1.png'
 
 //valley
 import movieapp from '../../Assets/movieapp.png'
+import movieapp1 from '../../Assets/movieapp1.png'
 
-//LIA
-import LIA from '../../Assets/LIA/LIA.jpg'
+
 
 const ProjectSection = ({ darkMode }) => {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -51,6 +52,7 @@ const ProjectSection = ({ darkMode }) => {
         triggerOnce: true,
         threshold: 0.1,
     });
+
     const projects = [
         {
             title: 'Shop At Banau',
@@ -66,7 +68,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://shopatbanau.com',
             github: 'https://github.com/saikanepal/epasal_front',
             githubServer: 'Private',
-            images: [banau, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11],
+            images: [banau, banau1, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11],
             techStack: [<SiReact title="React" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />]
         },
         {
@@ -82,7 +84,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://saikanepal.com',
             github: 'https://github.com/saikanepal/Saika_Nepal_Front_end',
             githubServer: 'Private',
-            images: [saika, s1, s2, s3, s4, s5, s6],
+            images: [saika, saika1, s1, s2, s3, s4, s5, s6],
             techStack: [<SiReact title="React" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiFigma title="Figma" />]
         },
         {
@@ -98,7 +100,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://cstogether.netlify.app',
             github: 'https://github.com/skarn03/cstog',
             githubServer: 'https://github.com/skarn03/cstogback',
-            images: [chatapp, chatapp],
+            images: [chatapp, chatapp1, chatapp1],
             techStack: [<SiNextdotjs title="Next.js" />, <SiSpringboot title="Spring Boot" />, <SiMongodb title="MongoDB" />]
         },
         {
@@ -114,7 +116,7 @@ const ProjectSection = ({ darkMode }) => {
             link: 'https://vall3y.netlify.app',
             github: 'https://github.com/skarn03/Valley_Client-',
             githubServer: 'https://github.com/skarn03/Valley/tree/main/server',
-            images: [movieapp, movieapp],
+            images: [movieapp, movieapp1, movieapp1],
             techStack: [<SiReact title="React" />, <SiBootstrap title="Bootstrap" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiSocketdotio title="Socket.io" />]
         },
     ];
@@ -158,7 +160,7 @@ const ProjectSection = ({ darkMode }) => {
     };
 
     return (
-        <div className={`pb-4 ${darkMode ? 'bg-black text-gray-400' : 'bg-white text-black'}`}>
+        <div className={`pb-4 ${darkMode ? 'bg-black text-gray-300' : 'bg-white text-black'}`}>
             <motion.div
                 ref={ref}
                 variants={containerVariants}
@@ -218,18 +220,18 @@ const ProjectSection = ({ darkMode }) => {
                                 </motion.div>
                             </div>
                             <div>
-                                <h2 className="text-sm font-semibold">{selectedProject.title}</h2>
-                                <p className="text-xs text-gray-500">{selectedProject.date}</p>
-                                <p className={`text-xs ${selectedProject.location === 'Online' ? 'text-green-500' : 'text-red-500'}`}>
+                                <h2 className="text- font-semibold">{selectedProject.title}</h2>
+                                <p className="text-sm text-gray-500">{selectedProject.date}</p>
+                                <p className={`text-sm ${selectedProject.location === 'Online' ? 'text-green-500' : 'text-red-500'}`}>
                                     {selectedProject.location}
                                 </p>
                             </div>
 
                         </div>
                         <Carousel {...carouselSettings}>
-                            {selectedProject.images.map((image, index) => (
+                            {selectedProject.images.slice(1).map((image, index) => (
                                 <div key={index} className="p-4">
-                                    <img src={image} alt={`Project ${index + 1}`} className="w-full h-screen object-contain rounded-lg max-h-96" />
+                                    <img src={image} alt={`Project ${index}`} className="w-full h-screen object-contain rounded-lg max-h-96" />
                                 </div>
                             ))}
                         </Carousel>
@@ -246,7 +248,7 @@ const ProjectSection = ({ darkMode }) => {
                         <div className=' flex flex-col sm:flex-row justify-between '>
                             {selectedProject.github && (
                                 <div className="mt-4 flex justify-between items-center">
-                                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white flex items-center">
+                                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white flex items-center">
                                         <FaGithub size={20} className="mr-1 text-[8px]" /> Client Side Code
                                     </a>
                                 </div>
@@ -275,9 +277,9 @@ const ProjectSection = ({ darkMode }) => {
                         </div>
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center space-x-4">
-                                <FaHeart className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaComment className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaShare className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaHeart size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaComment size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaShare size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                             </div>
                             <div className="mt-4">
                                 <h3 className="text-sm font-semibold mb-2">Tech Stack</h3>

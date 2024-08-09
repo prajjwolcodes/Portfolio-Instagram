@@ -1,65 +1,58 @@
 import React, { useState } from 'react';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaTimes, FaHeart, FaComment, FaShareSquare, FaBookmark } from 'react-icons/fa';
-import { BiBook, BiBrain, BiMedal, BiStar, BiLayer } from 'react-icons/bi';
-import { motion } from 'framer-motion';
-import e1 from '../../Assets/e1.jpg';
-import e2 from '../../Assets/e2.jpg';
-import e3 from '../../Assets/e3.jpg';
-import e4 from '../../Assets/e4.png';
+import { BiBook, BiBrain, BiMedal, BiStar, } from 'react-icons/bi';
 import khwopa from '../../Assets/khwopa.png'
 import ascol from '../../Assets/ascol.png'
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const educationData = [
     {
-        institution: 'Eastern Michigan University 🏫',
-        degree: 'Bachelor of Science in Computer Science 🎓',
+        institution: 'Khwopa Higher Secondary College',
+        degree: 'Computer Science 🎓',
         major: 'Computer Science 💻',
-        minor: 'Mathematics 📐',
-        GPA: '3.87 ⭐',
-        startYear: 2022,
-        endYear: 2026,
+        GPA: '3.45 ⭐',
+        startYear: 2020,
+        endYear: 2022,
         courses: [
-            'Data Structures 📚',
             'Algorithms 🧠',
             'Web Development 📄',
             'Front-End Development (HTML, CSS, JavaScript) 🌐',
-            'Back-End Development (Node.js, Express.js) 🔧',
+            'Database Management (MySQL) 🔧',
             'API Design and Development 🧩',
-            'Cloud Computing (AWS, Azure, Google Cloud) ☁️',
+            'Cloud Computing',
             'Version Control (Git, GitHub) 🔄'
         ]
         ,
         images: [
-            khwopa, e1, e2, e3, e4
+            khwopa
         ],
-        caption: '🌟View comments for more details',
+        caption: 'View comments for more details',
     },
     {
-        institution: 'Eastern Michigan University 🏫',
-        degree: 'Bachelor of Science in Computer Science 🎓',
+        institution: 'Amrit Science Campus',
+        degree: 'Bachelor in Computer Science and Information Technology 🎓',
         major: 'Computer Science 💻',
-        minor: 'Mathematics 📐',
         GPA: '3.87 ⭐',
         startYear: 2022,
-        endYear: 2026,
+        endYear: "Current",
         courses: [
             'Data Structures 📚',
             'Algorithms 🧠',
             'Web Development 📄',
-            'Front-End Development (HTML, CSS, JavaScript) 🌐',
+            'Statistical Analysis 📊',
             'Back-End Development (Node.js, Express.js) 🔧',
             'API Design and Development 🧩',
-            'Cloud Computing (AWS, Azure, Google Cloud) ☁️',
-            'Version Control (Git, GitHub) 🔄'
+            'Computer Architecture ☁️',
+            'Numerical Methods 🔄'
         ]
         ,
         images: [
-            ascol, e1, e2, e3, e4
+            ascol
         ],
-        caption: '🌟View comments for more details',
+        caption: 'View comments for more details',
     },
     // Add more education data if needed
 ];
@@ -70,25 +63,51 @@ const EducationSection = ({ darkMode }) => {
     const [selectedEducation, setSelectedEducation] = useState(null);
     const [showComments, setShowComments] = useState(false);
 
-    const carouselSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        lazyLoad: true,
+    const controls = useAnimation();
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    React.useEffect(() => {
+        if (inView) {
+            controls.start('visible');
+        }
+    }, [controls, inView]);
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2, duration: 0.4 }
+        },
     };
 
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { type: 'spring', stiffness: 50, damping: 10 }
+        },
+    };
+
+
     return (
-        <div className={`pb-4 ${darkMode ? 'bg-black text-gray-400' : 'bg-white text-black'}`}>
-            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+        <div className={`pb-4 ${darkMode ? 'bg-black text-gray-300' : 'bg-white text-black'}`}>
+            <motion.div ref={ref}
+                variants={containerVariants}
+                initial="hidden"
+                animate={controls}
+                className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-4">
                 {educationData.map((education, index) => (
                     <motion.div
                         key={index}
                         className={`relative cursor-pointer group ${darkMode ? 'border-2 rounded-none border-gray-400' : 'border-gray-900'}`}
                         onClick={() => setSelectedEducation(education)}
                         style={{ aspectRatio: '1 / 1' }}
+                        variants={itemVariants}
+
                     >
                         <motion.div
                             className={`w-full h-full flex items-center justify-center ${darkMode ? 'bg-black text-gray-600 border-gray-400' : 'bg-white text-black'} rounded-md`}
@@ -105,7 +124,7 @@ const EducationSection = ({ darkMode }) => {
                         </motion.div>
                     </motion.div>
                 ))}
-            </div>
+            </motion.div>
 
             {selectedEducation && (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
@@ -117,34 +136,31 @@ const EducationSection = ({ darkMode }) => {
                             <FaTimes size={24} />
                         </button>
                         <div className="flex items-center space-x-2 mb-4">
-                            <img src={selectedEducation.images[0]} alt="Profile" className="w-10 h-10 rounded-full object-cover" />
+                            <img src={selectedEducation.images} alt="Profile" className="w-10 h-10 rounded-full object-cover" />
 
                             <div>
-                                <h2 className="text-sm font-semibold">{selectedEducation.institution}</h2>
-                                <p className="text-xs text-gray-500">{`${selectedEducation.startYear} - ${selectedEducation.endYear}`}</p>
+                                <h2 className="font-semibold">{selectedEducation.institution}</h2>
+                                <p className="text-sm text-gray-500">{`${selectedEducation.startYear} - ${selectedEducation.endYear}`}</p>
                             </div>
                         </div>
-                        <Slider {...carouselSettings}>
-                            {selectedEducation.images.map((image, index) => (
-                                <div key={index} className="p-4">
-                                    <img src={image} alt={`Education ${index}`} className="w-full h-full object-cover rounded-lg" />
-                                </div>
-                            ))}
-                        </Slider>
+                        <div className="p-4">
+                            <img src={selectedEducation.images} alt='Education' className="w-full h-full object-cover rounded-lg" />
+                        </div>
+
                         <div className="relative mb-4">
                             <div className="aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700" />
                         </div>
 
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center space-x-4">
-                                <FaHeart className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaComment className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} onClick={() => setShowComments(!showComments)} />
-                                <FaShareSquare className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaHeart size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'} cursor-pointer`} />
+                                <FaComment size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'} cursor-pointer`} onClick={() => setShowComments(!showComments)} />
+                                <FaShareSquare size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'} cursor-pointer`} />
                             </div>
-                            <FaBookmark className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                            <FaBookmark className={`text-${darkMode ? 'gray-400' : 'gray-600'} cursor-pointer`} />
                         </div>
                         <div className="mb-4">
-                            <p className="text-sm"><strong>{selectedEducation.institution}</strong> {selectedEducation.caption}</p>
+                            <p><strong>{selectedEducation.institution}</strong> {selectedEducation.caption}</p>
                         </div>
                         {showComments ? (
                             <>
@@ -152,7 +168,6 @@ const EducationSection = ({ darkMode }) => {
                                     <div className="p-4 space-y-2">
                                         <p className="text-sm flex items-start flex-wrap"><BiBook className="mr-2" /> <strong>Degree:</strong> <span className="break-words w-full">{selectedEducation.degree}</span></p>
                                         <p className="text-sm flex items-start flex-wrap"><BiBrain className="mr-2" /> <strong>Major:</strong> <span className="break-words w-full">{selectedEducation.major}</span></p>
-                                        <p className="text-sm flex items-start flex-wrap"><BiLayer className="mr-2" /> <strong>Minor:</strong> <span className="break-words w-full">{selectedEducation.minor}</span></p>
                                         <p className="text-sm flex items-start flex-wrap"><BiStar className="mr-2" /> <strong>GPA:</strong> <span className="break-words w-full">{selectedEducation.GPA}</span></p>
                                         <p className="text-sm flex items-start flex-wrap"><BiMedal className="mr-2" /> <strong>Courses:</strong> <span className="break-words w-full">{selectedEducation.courses.join(', ')}</span></p>
                                     </div>

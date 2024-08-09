@@ -249,8 +249,8 @@ const SkillsSection = ({ darkMode }) => {
                                 </motion.div>
                             </div>
                             <div>
-                                <h2 className="text-sm font-semibold">{selectedCategory.title}</h2>
-                                <p className="text-xs text-gray-500">5 days ago</p>
+                                <h2 className="font-semibold">{selectedCategory.title}</h2>
+                                <p className="text-sm text-gray-500">5 days ago</p>
                             </div>
                         </div>
                         <Slider {...carouselSettings}>
@@ -284,9 +284,9 @@ const SkillsSection = ({ darkMode }) => {
                         </div>
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center space-x-4">
-                                <FaHeart className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaComment className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaShare className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaHeart size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaComment size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaShare size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                             </div>
                             <FaBookmark className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                         </div>

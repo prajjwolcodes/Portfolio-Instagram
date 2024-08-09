@@ -4,12 +4,12 @@ import { useInView } from 'react-intersection-observer';
 import Carousel from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { FaBuilding, FaCalendarAlt, FaArrowRight, FaHeart, FaComment, FaShare, FaTimes, FaBookmark, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
-import CEO from '../../Assets/CEO.png';
+import { FaBuilding, FaCalendarAlt, FaHeart, FaComment, FaShare, FaTimes, FaBookmark, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
 import TA from '../../Assets/TA.png';
 import IT from '../../Assets/IT.png';
 import dev from '../../Assets/dev.png';
 import './employee.css'
+
 const experiences = [
     {
         title: 'Full Stack Web Developer',
@@ -27,28 +27,28 @@ const experiences = [
 
     {
         title: 'Freelancer',
-        company: 'Department of Information Technology, Eastern Michigan University',
-        date: 'Aug 2022 – Jan 2024',
-        location: 'Ypsilanti, MI, USA',
+        company: 'Group of college mates',
+        date: 'Oct 2023 – Jan 2024',
+        location: 'Bhaktapur, Nepal',
         description: [
-            '🔒 Utilized admin access for successful recovery of student accounts, achieving a 90% success rate.',
-            '🛡️ Conducted security sessions, including phishing awareness workshops, resulting in a 25% reduction in security issues.',
-            '🔧 Optimized server protocols, addressing system bugs and enhancing server uptime by 20%.',
+            '🔒 Worked with a team of talented friends to create websites for schools and gyms, showcasing strong teamwork and project management skills.',
+            '🛡️ Prioritized client satisfaction by ensuring that every project met or exceeded expectations in design and functionality.',
+            '🔧 Built websites for varied industries, demonstrating adaptability and a broad skill set in web development.',
         ],
         link: '',
         bgImage: IT,
     },
     {
         title: 'Intern',
-        company: 'Department of Computer Science, Eastern Michigan University',
-        date: 'Jan 2022 – Aug -2022',
-        location: 'Ypsilanti, MI, USA',
+        company: 'Saika Nepal',
+        date: 'Apr 2024 – Current',
+        location: 'Remote',
         description: [
-            '📚 Addressed individual review sessions to enhance student’s understanding of Algorithm and Data Structure',
-            '🤝 Collaborated with the professor to align coursework with curriculum objectives, resulting in a 17% grade increase.',
-            '👨‍🏫 Provided post-class Java tutoring to reinforce OOP concepts, leading to a 25% increase in timely project completions',
+            '📚 Saika Nepal has- a corporate-style landing page with an admin dashboard. It was developed to provide a professional online presence with a focus on UI/UX design principles, built using React, Express.js, and MongoDB.',
+            '🤝 Designed a visually appealing and user-friendly landing page using Figma for high-fidelity mockups and React for development. Implemented responsive design with CSS-in-JS or Tailwind CSS for consistent styling',
+            '👨‍🏫 Developed an admin dashboard with React and integrated it with backend APIs for content, user, and analytics management. Used Express.js and MongoDB for backend operations.',
         ],
-        link: '',
+        link: 'https://saikanepal.com',
         bgImage: TA,
     },
 
@@ -155,13 +155,14 @@ const ExperienceSection = ({ darkMode }) => {
                                     <FaBuilding size={24} />
                                 </motion.div>
                             </div>
-                            <div>
-                                <h2 className="text-sm font-semibold">{selectedExperience.company}</h2>
-                                <p className="   flex flex-row items-center gap-[5px] text-xs text-gray-500"><FaCalendarAlt /> {selectedExperience.date}</p>
-                                <p className="flex flex-row items-center gap-[5px] text-xs text-gray-500"><FaMapMarkerAlt /> {selectedExperience.location}</p>
+                            <div className='flex flex-col'>
+                                <h2 className="font-semibold">{selectedExperience.company}</h2>
+                                <p className="   flex flex-row items-center gap-[5px] text-sm text-gray-500"><FaCalendarAlt /> {selectedExperience.date}</p>
+                                <p className="flex flex-row items-center gap-[5px] text-sm text-gray-500"><FaMapMarkerAlt /> {selectedExperience.location}</p>
                             </div>
                         </div>
-                        <Carousel {...carouselSettings}>
+                        <Carousel {...carouselSettings}
+                        >
                             {selectedExperience.description.map((desc, index) => (
                                 <div key={index} className="p-4">
                                     <p className="text-md">{desc}</p>
@@ -183,9 +184,9 @@ const ExperienceSection = ({ darkMode }) => {
                         </div>
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center space-x-4">
-                                <FaHeart className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaComment className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
-                                <FaShare className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaHeart size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaComment size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
+                                <FaShare size={20} className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                             </div>
                             <FaBookmark className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                         </div>

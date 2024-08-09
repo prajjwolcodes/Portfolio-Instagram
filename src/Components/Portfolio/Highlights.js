@@ -62,7 +62,7 @@ const Highlight = ({ highlight, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <motion.div 
+            <motion.div
                 className="relative w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto"
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
@@ -114,8 +114,8 @@ const Highlight = ({ highlight, onClose }) => {
                         placeholder={`Reply to ${highlight.username}`}
                         className="flex-1 px-4 py-2 rounded-full bg-gray-800 text-white outline-none"
                     />
-                    <FaHeart className="text-white text-2xl" />
-                    <FaPaperPlane className="text-white text-2xl" />
+                    <FaHeart size={20} className="text-white text-2xl" />
+                    <FaPaperPlane size={20} className="text-white text-2xl" />
                 </div>
             </motion.div>
         </motion.div>
