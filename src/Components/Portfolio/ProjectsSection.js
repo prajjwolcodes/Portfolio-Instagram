@@ -34,13 +34,16 @@ import b9 from '../../Assets/Banau/b9.png';
 import b10 from '../../Assets/Banau/b10.png';
 import b11 from '../../Assets/Banau/b11.png';
 
-//cs2
+//chat app
 import chatapp from '../../Assets/chatapp.png'
 import chatapp1 from '../../Assets/chatapp1.png'
+import c0 from '../../Assets/c0.png'
 
-//valley
+//movie app
 import movieapp from '../../Assets/movieapp.png'
 import movieapp1 from '../../Assets/movieapp1.png'
+import m0 from '../../Assets/m0.png'
+import m1 from '../../Assets/m1.png'
 
 
 
@@ -88,36 +91,32 @@ const ProjectSection = ({ darkMode }) => {
             techStack: [<SiReact title="React" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiFigma title="Figma" />]
         },
         {
-            title: 'CsTogether',
-            date: 'Sep 2023 - Dec 2023',
+            title: 'Chat App',
+            date: 'Sep 2023 - Oct 2023',
             location: 'Offline',
             description: [
-                '💻 **CsTogether** is a full-stack web application designed for collaborative web projects. It utilizes Agile methodology, custom hooks, and reusable front-end components with Next.js, alongside microservices with Spring Boot for CRUD operations.',
-                '🤝 Facilitated collaborative coding and project management using Agile methodology. Developed custom React hooks for state management and reusable components for a modular codebase.',
-                '⚡ Integrated Next.js for server-side rendering, improving performance and SEO. Utilized static and dynamic routing along with API routes for server-side logic.',
-                '🔄 Utilized Spring Boot for efficient backend development and microservices architecture. Created RESTful APIs for communication between services, focusing on scalability and fault tolerance.',
+                '💻 My chat app is a real-time chat application built with React, Node.js, Express, and Socket.io.',
+                '🤝 Designed for seamless communication, ChatPasal enables users to engage in instant messaging with friends or groups.',
+                'The app features a clean and responsive interface, supporting features like live notifications, typing indicators, and message history. Whether for personal conversations or group discussions, ChatPasal provides a reliable and dynamic platform for staying connected.',
             ],
-            link: 'https://cstogether.netlify.app',
-            github: 'https://github.com/skarn03/cstog',
-            githubServer: 'https://github.com/skarn03/cstogback',
-            images: [chatapp, chatapp1, chatapp1],
-            techStack: [<SiNextdotjs title="Next.js" />, <SiSpringboot title="Spring Boot" />, <SiMongodb title="MongoDB" />]
+            link: 'https://chat-app-73as.onrender.com',
+            github: 'https://github.com/prajjwolcodes/Chat-App',
+            images: [chatapp, chatapp1, c0],
+            techStack: [<SiReact title="React.js" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiSocketdotio title="Socket.io" />]
         },
         {
-            title: 'Valley',
-            date: 'Apr 2023 -  July 2023',
-            location: 'Offline',
+            title: 'Movie Pasal',
+            date: 'Oct 2023 -  Dec 2023',
+            location: 'Online',
             description: [
-                '🌐 **Valley** is a full-stack social networking site designed to enhance user interaction. Utilizing React.js and Bootstrap for the front-end, it features a scalable backend with Express.js and MongoDB, and real-time communication through Socket.io.',
-                '🗨 Developed a social networking platform with features like user profiles, messaging, and posts using React.js. Implemented interactive and dynamic UI elements.',
-                '🔔 Implemented real-time notifications and chat functionality using Socket.io, ensuring smooth user interactions with minimal latency.',
-                '🔧 Focused on creating a scalable backend infrastructure with Express.js and MongoDB, designed to handle user data and high traffic efficiently.',
+                '💻 Movie Pasal is a sleek and user-friendly movie app designed to help users discover, explore, and keep track of their favorite films. With an intuitive interface, Movie Pasal allows users to search for movies, view detailed information.',
+                '🤝 The app also provides personalized recommendations, making it easy to find new movies based on user preferences',
+                '⚡  Whether you are a casual viewer or a movie enthusiast, Movie Pasal is your go-to destination for all things cinema.',
             ],
-            link: 'https://vall3y.netlify.app',
-            github: 'https://github.com/skarn03/Valley_Client-',
-            githubServer: 'https://github.com/skarn03/Valley/tree/main/server',
-            images: [movieapp, movieapp1, movieapp1],
-            techStack: [<SiReact title="React" />, <SiBootstrap title="Bootstrap" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />, <SiSocketdotio title="Socket.io" />]
+            link: 'https://prajjwol-movie-app.netlify.app/',
+            github: 'https://github.com/prajjwolcodes/Movie-App',
+            images: [movieapp, movieapp1, m0, m1],
+            techStack: [<SiReact title="React" />, <SiBootstrap title="Bootstrap" />, <SiExpress title="Express" />, <SiMongodb title="MongoDB" />]
         },
     ];
 
@@ -152,11 +151,8 @@ const ProjectSection = ({ darkMode }) => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        appendDots: dots => (
-            <div>
-                <ul className={darkMode ? 'dark-dots' : 'light-dots'}>{dots}</ul>
-            </div>
-        ),
+        arrows: true,
+        accessibility: true,
     };
 
     return (
@@ -186,7 +182,8 @@ const ProjectSection = ({ darkMode }) => {
                                 backgroundImage: `url(${project.images[0]})`,
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
-                                position: 'relative'
+                                position: 'relative',
+
                             }}
                         >
                             <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
@@ -222,7 +219,7 @@ const ProjectSection = ({ darkMode }) => {
                             <div>
                                 <h2 className="text- font-semibold">{selectedProject.title}</h2>
                                 <p className="text-sm text-gray-500">{selectedProject.date}</p>
-                                <p className={`text-sm ${selectedProject.location === 'Online' ? 'text-green-500' : 'text-red-500'}`}>
+                                <p className={`text-sm ${selectedProject.location === 'Online' ? 'text-green-700' : 'text-red-500'}`}>
                                     {selectedProject.location}
                                 </p>
                             </div>
@@ -240,7 +237,7 @@ const ProjectSection = ({ darkMode }) => {
                                 href={selectedProject.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center mt-4 text-sm text-blue-500 hover:underline"
+                                className="flex items-center mt-4 text-sm text-blue-800 dark:text-blue-800 hover:underline"
                             >
                                 <FaExternalLinkAlt className="mr-1" /> Visit Website
                             </a>
@@ -248,7 +245,7 @@ const ProjectSection = ({ darkMode }) => {
                         <div className=' flex flex-col sm:flex-row justify-between '>
                             {selectedProject.github && (
                                 <div className="mt-4 flex justify-between items-center">
-                                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white flex items-center">
+                                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className={` ${darkMode ? "text-gray-200 hover:text-white" : 'text-gray-800 hover:text-black'} flex items-center`}>
                                         <FaGithub size={20} className="mr-1 text-[8px]" /> Client Side Code
                                     </a>
                                 </div>
@@ -256,7 +253,7 @@ const ProjectSection = ({ darkMode }) => {
                             {selectedProject.githubServer && (
                                 <div className="mt-4 flex justify-between items-center">
                                     {selectedProject.githubServer === 'Private' ? (
-                                        <span className="text-red-200 dark:text-red-400 flex items-center">
+                                        <span className="text-red-500 flex items-center">
                                             <FaGithub size={20} className="mr-1 text-sm" /> Private Server Repository
                                         </span>
                                     ) : (
@@ -310,7 +307,7 @@ const ProjectSection = ({ darkMode }) => {
 
                         <div className="flex justify-between mt-4">
                             <button
-                                className="text-sm text-blue-500 hover:underline"
+                                className="text-sm text-blue-800 dark:text-blue-800 hover:underline"
                                 onClick={() => setShowComments(!showComments)}
                             >
                                 {showComments ? 'Hide Comments' : 'Show Comments'}

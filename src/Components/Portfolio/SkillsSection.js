@@ -13,6 +13,7 @@ import database from '../../Assets/database.png';
 import others from '../../Assets/others.png';
 import tools from '../../Assets/tools.png';
 import { GiAbstract016 } from 'react-icons/gi'; // Placeholder icon
+import { TbLetterC } from "react-icons/tb";
 
 const categories = [
     { title: 'Languages', icon: <FaJs size={60} />, image: Language },
@@ -45,7 +46,13 @@ const skills = {
             icon: <FaCss3Alt size={40} />,
             color: '#1572B6',
         },
+        {
+            name: 'C/C++',
+            icon: <TbLetterC size={40} />,
+            color: '#1572B6',
+        },
     ],
+
     Frameworks: [
         {
             name: 'React',

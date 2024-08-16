@@ -1,18 +1,19 @@
 // CHANGE URL
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaEllipsisV, FaUser, FaBriefcase, FaGraduationCap, FaProjectDiagram, FaEnvelope, FaCogs, FaShareAlt, FaPaperPlane, FaMusic, FaPlay, FaVolumeUp, FaPause } from 'react-icons/fa';
+import { FaHome, FaEllipsisV, FaBriefcase, FaGraduationCap, FaProjectDiagram, FaEnvelope, FaCogs, FaShareAlt, FaPaperPlane, FaMusic, FaPlay, FaVolumeUp, FaPause } from 'react-icons/fa';
+import { AiOutlineClose } from "react-icons/ai";
 import HomeSection from './HomeSection';
 import EmploymentSection from './EmploymentSection';
 import EducationSection from './EducationSection';
 import ProjectsSection from './ProjectsSection';
 import ContactSection from './ContactSection';
-import AboutSection from './AboutSection';
 import SkillsSection from './SkillsSection';
-import Highlights from './Highlights'; // Import the Highlights component
 import prajjwol from '../../Assets/prajjwol.jpg';
+import meme from '../../Assets/meme.webp';
 import ReactPlayer from 'react-player';
+import StorySection from './StorySection';
 
 const sections = [
     { title: 'Home', icon: FaHome },
@@ -25,6 +26,16 @@ const sections = [
 
 const Portfolio = ({ darkMode }) => {
     const [activeSection, setActiveSection] = useState(sections[0].title);
+    const [selectedStory, setSelectedStory] = useState(null);
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    const closeModal = () => {
+        setIsVisible(false);
+        setRemainingTime(10000);
+        setTimeout(() => setSelectedStory(null), 100); // Delay to match animation
+    };
+
     const [followers, setFollowers] = useState(() => {
         const storedFollowers = localStorage.getItem('followers');
         return storedFollowers !== null ? parseInt(storedFollowers, 10) : 378;
@@ -37,6 +48,31 @@ const Portfolio = ({ darkMode }) => {
     const [playing, setPlaying] = useState(false); // Control music playback
     const [volume, setVolume] = useState(0.4); // Control music volume
     const [showControls, setShowControls] = useState(false); // Toggle music controls
+
+    const lineRef = useRef(null);
+    const [remainingTime, setRemainingTime] = useState(10000); // 10 seconds
+    const [watchStory, setWatchStory] = useState(false)
+    const timerRef = useRef(null);
+
+    const handleClick = (story) => {
+        setSelectedStory(story);
+        setIsVisible(true);
+        setRemainingTime(10000);
+    };
+
+    useEffect(() => {
+        timerRef.current = setTimeout(() => {
+            setSelectedStory(null);
+            setIsVisible(false);
+            setRemainingTime(10000);
+        }, remainingTime);
+
+        return () => {
+            clearTimeout(timerRef.current);
+
+        };
+
+    }, [isVisible, remainingTime]);
 
     useEffect(() => {
         localStorage.setItem('following', following);
@@ -95,13 +131,7 @@ const Portfolio = ({ darkMode }) => {
         setPlaying(prev => !prev);
         setShowControls(prev => !prev);
     };
-    const increaseVolume = () => {
-        setVolume(prev => Math.min(prev + 0.1, 1));
-    };
 
-    const decreaseVolume = () => {
-        setVolume(prev => Math.max(prev - 0.1, 0));
-    };
     const [isExpanded, setIsExpanded] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -114,20 +144,73 @@ const Portfolio = ({ darkMode }) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
             className={`max-w-screen-lg mx-auto pt-6 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
             <div className="grid grid-cols-3 md:grid-cols-3 items-start gap-8 mb-4">
                 <div className="col-span-1 flex flex-col items-center">
-                    <div className="relative mb-4 top-4 sm:left-8" >
-                        <img
-                            src={prajjwol}
-                            alt="Profile"
-                            className={`rounded-full w-24 h-24 md:w-3 md:h-32  lg:w-44 lg:h-44 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
-                        />
+                    <div className="relative mb-4 top-4 sm:left-8" onClick={() => handleClick(prajjwol)}>
+                        <div className="relative rounded-full p-1" onClick={() => setWatchStory(true)}>
+                            <div className={`absolute inset-0 ${watchStory ? "bg-gray-500" : "bg-gradient-to-tr from-orange-500 via-red-500 to-purple-600"}  rounded-full`}></div>
+                            <div className="relative w-full h-full bg-black rounded-full">
+                                <img
+                                    src={prajjwol}
+                                    alt="Profile"
+                                    className={`rounded-full w-24 h-24 md:w-3 md:h-32  lg:w-44 lg:h-44 border-4 transition-colors cursor-pointer duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
+                                />
+                            </div>
+                        </div>
 
+                        {selectedStory && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                transition={{ duration: 0.8, ease: 'easeInOut' }}
+                                className={`p-2 fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50`}
+                            >
+                                <div className="relative bg-gray-900">
+                                    <div className='absolute z-50 top-1 px-3 w-full'>
+                                        <div className="mt-2 flex gap-3 justify-center items-center">
+                                            <div className="w-full h-1 bg-gray-500 rounded overflow-hidden">
+                                                <div ref={lineRef} className="h-full bg-white animate-fill w-full"></div>
+                                            </div>
+
+                                            <button
+                                                className="text-white "
+                                                onClick={closeModal}
+                                            >
+                                                <AiOutlineClose size={20} />
+                                            </button>
+                                        </div>
+                                        <div className='flex gap-2 items-center'>
+                                            <img
+                                                src={prajjwol}
+                                                alt="Profile"
+                                                className={`rounded-full w-10 h-10 border border-white transition-colors cursor-pointer`}
+                                            />
+                                            <h1 className='text-lg text-white font-semibold tracking-normal'>Prajjwol Shrestha</h1>
+                                            <span className='text-sm text-gray-400'>36 secs ago</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className={`relative transform transition-transform duration-300 ${isVisible ? "scale-100" : "scale-75"
+                                            }`}
+                                    >
+                                        <img
+                                            src={meme}
+                                            alt="Story"
+                                            className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl h-screen rounded-lg pt-[90px] pb-5"
+                                        />
+
+                                    </div>
+
+                                </div>
+                            </motion.div>
+                        )}
 
                     </div>
                     <div className="fixed bottom-5 left-5">
@@ -143,7 +226,7 @@ const Portfolio = ({ darkMode }) => {
                                 <FaMusic className="text-sm md:text-xl" />
                             </button>
                             {showControls && (
-                                <div className="flex flex-row justify-center items-center space-x-2 ">
+                                <div className="flex flex-row justify-center items-center space-x-4 ">
                                     <button
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={togglePlay}
@@ -157,7 +240,7 @@ const Portfolio = ({ darkMode }) => {
                                         step="0.01"
                                         value={volume}
                                         onChange={handleVolumeChange}
-                                        className="ml-1 sm:ml-2 w-16 sm:w-20 h-[5px] bg-gray-300 rounded-lg cursor-pointer focus:outline-none appearance-none"
+                                        className="ml-1 sm:ml-2 w-16 sm:w-24 h-[5px] bg-gray-300 rounded-lg cursor-pointer focus:outline-none appearance-none"
                                         style={{
                                             backgroundImage: 'linear-gradient(to right, #3b82f6, #3b82f6)',
                                             backgroundSize: `${volume * 100}% 100%`,
@@ -174,9 +257,6 @@ const Portfolio = ({ darkMode }) => {
                             volume={volume}
                             className="hidden"
                         />
-                    </div>
-                    <div className=' w-full'>
-                        {/* <Highlights /> */}
                     </div>
                 </div>
 
@@ -219,14 +299,14 @@ const Portfolio = ({ darkMode }) => {
 
                         </div>
 
-                        <div className='flex gap-10 mt-5'>
+                        <div className='flex gap-10 my-4'>
                             <h1 className='text-lg'> <span className='font-semibold text-xl'>5 </span>posts</h1>
                             <h1 className='text-lg'><span className='font-semibold text-xl'>99 </span>followers</h1>
                             <h1 className='text-lg'><span className='font-semibold text-xl'>99 </span>following</h1>
 
                         </div>
 
-                        <div className="flex items-center space-x-2 mt-5">
+                        <div className="flex items-center space-x-2">
                             <motion.button
                                 whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
                                 whileTap={{ scale: 0.9 }}
@@ -252,7 +332,7 @@ const Portfolio = ({ darkMode }) => {
                                 <FaShareAlt onClick={handleShare} className="mr-[4px]" /> {shareButtonText}
                             </motion.button>
                         </div>
-                        <p className={`mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
+                        <p className={`mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Bhaktapur, NEPAL <span className="text-sm text-gray-400">(him/he)</span>
                         </p>
                         <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
@@ -279,14 +359,13 @@ const Portfolio = ({ darkMode }) => {
                                 </span>
                             </p>
                         </div>
-                        <p className={`mt-2 text-sm lg:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                            Followed by <a target='_blanks' href="https://saikanepal.com" className="text-blue-500">Saika Nepal </a>,<a target='_blanks' href="https://shopatbanau.com" className="text-orange-500"> ShopAtBanau</a>
-                        </p>
 
                     </motion.div>
 
                 </div >
             </div >
+            <StorySection />
+
 
             <div className='block sm:hidden'>
                 <div className="mt-4 text-sm md:text-lg flex justify-between px-14 py-4 border-t sm:mr-6 items-center space-x-4 ${darkMode ? 'border-gray-700' : 'border-gray-300'">
@@ -336,12 +415,13 @@ const Portfolio = ({ darkMode }) => {
                 </div>
             </nav>
 
-            <div className="mt-4">
+            <div className="mt-4 pb-8">
                 {renderSectionContent()}
             </div>
             <footer className={` absolute bottom-0 mx-auto w-full py-4 text-lg border-t text-center ${darkMode ? 'text-gray-50 border-gray-100' : 'text-gray-700 border-gray-900'} sm:hidden`}>
                 <p>{activeSection}</p>
             </footer>
+
         </motion.div >
     );
 };
