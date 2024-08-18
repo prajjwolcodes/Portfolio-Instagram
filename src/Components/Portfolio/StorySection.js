@@ -75,17 +75,17 @@ function App() {
     };
 
     return (
-        <div className="mt-1 py-6">
+        <div className="mt-1 px-2 py-3 md:py-6">
             <div className="flex gap-5">
                 {stories.map((story) => (
                     <div key={story.id} className="relative flex flex-col gap-2 justify-center items-center">
                         <img
                             src={logo}
                             alt={story.alt}
-                            className="w-[86px] h-[86px] rounded-full border-4 border-gray-200 cursor-pointer hover:scale-110 transition-transform duration-200"
+                            className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] lg:w-[86px] lg:h-[86px] rounded-full border-4 border-gray-300 cursor-pointer hover:scale-110 transition-transform duration-200"
                             onClick={() => handleClick(story)}
                         />
-                        <p>{story.text}</p>
+                        <p className="text-sm sm:text-base font-semibold">{story.text}</p>
                     </div>
                 ))}
             </div>
@@ -99,7 +99,7 @@ function App() {
                     className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 `}
                 >
                     <div className="relative bg-gray-900">
-                        <div className='absolute z-50 top-1 pl-3 py-2 w-full'>
+                        <div className='absolute z-50 top-6 sm:top-1 pl-3 py-2 w-full'>
                             <div className="flex gap-3 justify-center items-center">
                                 <div className="w-full h-1 bg-gray-500 rounded overflow-hidden">
                                     <div ref={lineRef} className="h-full bg-white"></div>
@@ -130,11 +130,11 @@ function App() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0.5, scale: 0.95 }}
                                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                                className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl h-screen rounded-lg"
+                                className="max-w-full sm:max-w-2xl lg:max-w-2xl xl:max-w-2xl h-screen rounded-lg"
                             />
                             {storyIndex > 0 && (
                                 <button
-                                    className="absolute -left-16 top-1/2 transform -translate-y-1/2 text-white cursor-pointer text-4xl"
+                                    className="absolute left-3 sm:-left-16 top-1/2 transform font-bold -translate-y-1/2 text-black sm:text-white cursor-pointer text-4xl"
                                     onClick={handlePrevStory}
                                 >
                                     <GrPrevious />
@@ -142,7 +142,7 @@ function App() {
                             )}
                             {storyIndex < selectedStory.stories.length - 1 && (
                                 <button
-                                    className="absolute -right-16 top-1/2 transform -translate-y-1/2 text-white cursor-pointer text-4xl"
+                                    className="absolute right-3 sm:-right-16 top-1/2 font-bold transform -translate-y-1/2 text-black sm:text-white cursor-pointer text-4xl"
                                     onClick={handleNextStory}
                                 >
                                     <GrNext />

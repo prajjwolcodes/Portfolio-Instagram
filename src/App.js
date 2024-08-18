@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className={`App min-h-screen relative ${darkMode ? 'bg-black text-white' : 'bg-white text-black'} transition-colors duration-300 ease-in-out`}>
       <button
-        className={`fixed z-50 top-2 right-2 sm:top-4 sm:right-4 p-2 rounded-full border border-gray-300 shadow-lg transition-colors duration-300 ease-in-out focus:outline-none ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
+        className={`fixed z-50 top-3 right-2 md:top-4 md:right-4 p-2 rounded-full border border-gray-300 shadow-lg transition-colors duration-300 ease-in-out focus:outline-none ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
         onClick={toggleDarkMode}
       >
         {darkMode ? <FaSun className="text-yellow-400 text-md sm:text-xl" /> : <FaMoon className="text-gray-800 text-md sm:text-xl" />}

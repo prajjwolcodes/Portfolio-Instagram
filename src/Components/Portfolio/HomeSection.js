@@ -48,19 +48,19 @@ const HomeSection = ({ setActiveSection, darkMode }) => {
             variants={containerVariants}
             initial="hidden"
             animate={controls}
-            className={`grid grid-cols-3 gap-4   ${darkMode ? 'bg-black' : 'bg-white'}`}
+            className={`grid grid-cols-3 gap-3 md:gap-4   ${darkMode ? 'bg-black' : 'bg-white'}`}
         >
             {sections.map((section, index) => (
                 <motion.div
                     key={index}
                     variants={itemVariants}
                     onClick={() => setActiveSection(section.title)}
-                    className={`relative group border ${darkMode ? 'border-gray-700' : 'border-gray-300'} rounded-lg flex items-center justify-center overflow-hidden cursor-pointer`}
+                    className={`relative group border ${darkMode ? 'border-gray-700' : 'border-gray-300'} rounded-md md:rounded-lg flex items-center justify-center overflow-hidden cursor-pointer`}
                     style={{ aspectRatio: '1 / 1' }} // Ensures the divs are square
                 >
                     <div className="flex flex-col items-center">
-                        <div className="text-4xl mb-2">{section.icon}</div>
-                        <h3 className=' text-sm sm:text-lg'>{section.title}</h3>
+                        <div className="text-lg md:text-2xl lg:text-4xl mb-2">{section.icon}</div>
+                        <h3 className='text-xs md:text-base lg:text-lg'>{section.title}</h3>
                         <motion.div
                             className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity"
                         >

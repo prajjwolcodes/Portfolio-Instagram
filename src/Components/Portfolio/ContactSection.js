@@ -71,12 +71,12 @@ const ContactSection = ({ darkMode }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full sm:w-[300px] bg-gray-300 rounded-lg flex-1 overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+                    className="w-full hidden lg:flex sm:w-[300px] bg-gray-300 rounded-lg flex-1 overflow-hidden sm:mr-10 p-10  items-end justify-start relative">
                     <iframe width="100%" height="100%" className="absolute inset-0" title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.6904435576153!2d85.36490402538037!3d27.665047577356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1a08deaac20d%3A0x2c994399b80e4bda!2sBalkot%20Chowk%2C%20Anantalingeshwar%2044600!5e0!3m2!1sen!2snp!4v1711943408541!5m2!1sen!2snp"></iframe>
                 </motion.div>
 
                 <motion.div
-                    className="w-[400px]"
+                    className="w-full px-0 md:px-4 lg:px-0 lg:w-[400px]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
@@ -86,7 +86,7 @@ const ContactSection = ({ darkMode }) => {
                     <motion.form
                         action="https://getform.io/f/lbkmyxmb"
                         method="POST"
-                        className={`mb-0 px-4 py-4 sm:px-6 md:px-0 rounded-lg ${darkMode ? 'bg-black' : 'bg-white'}`}
+                        className={`mb-0 px-2 py-2 sm:py-4 sm:px-6 md:px-0 rounded-lg ${darkMode ? 'bg-black' : 'bg-white'}`}
                         initial={{ y: -50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.5 }}
@@ -184,13 +184,13 @@ const ContactSection = ({ darkMode }) => {
                         </a>
                     </motion.div>
                     <div className='flex flex-col'>
-                        <div className='flex flex-col justify-center items-center sm:flex-row gap-8 mt-8'>
-                            <a href="tel:9803600040" className="flex items-center gap-2">
-                                <FaPhone size="1.5em" />
+                        <div className='flex flex-col justify-center items-center sm:flex-row sm:gap-8 mt-4 sm:mt-8'>
+                            <a href="tel:9803600040" className="flex items-center ">
+                                <FaPhone size="1.2em" />
                                 <span>+977-9803600040</span>
                             </a>
                             <a href="mailto:shresthaprajjwol4@gmail.com" className="flex items-center gap-2">
-                                <FaEnvelope size="1.5em" />
+                                <FaEnvelope size="1.2em" />
                                 <span>shresthaprajjwol4gmail.com</span>
                             </a>
 
@@ -200,7 +200,7 @@ const ContactSection = ({ darkMode }) => {
                 </motion.div>
 
             </div >
-            <div className="text-center text-sm text-gray-400 py-8">
+            <div className="text-center text-sm text-gray-400 py-8 mb-4">
                 <p>© {new Date().getFullYear()} Prajjwol Shrestha.</p>
                 <div className="flex gap-1 items-center justify-center">
                     <p>Assisted by Sahil Karn </p>

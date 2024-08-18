@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaEllipsisV, FaBriefcase, FaGraduationCap, FaProjectDiagram, FaEnvelope, FaCogs, FaShareAlt, FaPaperPlane, FaMusic, FaPlay, FaVolumeUp, FaPause } from 'react-icons/fa';
+import { FaHome, FaEllipsisV, FaBriefcase, FaGraduationCap, FaProjectDiagram, FaEnvelope, FaCogs, FaShareAlt, FaPaperPlane, FaMusic, FaPlay, FaPause } from 'react-icons/fa';
 import { AiOutlineClose } from "react-icons/ai";
 import HomeSection from './HomeSection';
 import EmploymentSection from './EmploymentSection';
@@ -45,7 +45,7 @@ const Portfolio = ({ darkMode }) => {
         return storedFollowing === 'true';
     });
     const [shareButtonText, setShareButtonText] = useState('Share');
-    const [playing, setPlaying] = useState(false); // Control music playback
+    const [playing, setPlaying] = useState(true); // Control music playback
     const [volume, setVolume] = useState(0.4); // Control music volume
     const [showControls, setShowControls] = useState(false); // Toggle music controls
 
@@ -148,18 +148,18 @@ const Portfolio = ({ darkMode }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
-            className={`max-w-screen-lg mx-auto pt-6 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
+            className={`max-w-screen-lg mx-auto pt-3 sm:pt-6 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
-            <div className="grid grid-cols-3 md:grid-cols-3 items-start gap-8 mb-4">
-                <div className="col-span-1 flex flex-col items-center">
-                    <div className="relative mb-4 top-4 sm:left-8" onClick={() => handleClick(prajjwol)}>
+            <div className="grid grid-cols-3 sm:grid-cols-3 items-start gap-2 md:gap-6 lg:gap-8 mb-4 px-2">
+                <div className="col-span-1 flex flex-col  items-center">
+                    <div className="relative mb-4 top-4 lg:left-8" onClick={() => handleClick(prajjwol)}>
                         <div className="relative rounded-full p-1" onClick={() => setWatchStory(true)}>
                             <div className={`absolute inset-0 ${watchStory ? "bg-gray-500" : "bg-gradient-to-tr from-orange-500 via-red-500 to-purple-600"}  rounded-full`}></div>
                             <div className="relative w-full h-full bg-black rounded-full">
                                 <img
                                     src={prajjwol}
                                     alt="Profile"
-                                    className={`rounded-full w-24 h-24 md:w-3 md:h-32  lg:w-44 lg:h-44 border-4 transition-colors cursor-pointer duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
+                                    className={`rounded-full w-24 h-24 sm:w-40 sm:h-40  lg:w-44 lg:h-44 border-4 transition-colors cursor-pointer duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
                                 />
                             </div>
                         </div>
@@ -170,17 +170,17 @@ const Portfolio = ({ darkMode }) => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 20 }}
                                 transition={{ duration: 0.8, ease: 'easeInOut' }}
-                                className={`p-2 fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50`}
+                                className={`p-0 sm:p-2 fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50`}
                             >
-                                <div className="relative bg-gray-900">
-                                    <div className='absolute z-50 top-1 px-3 w-full'>
+                                <div className="relative bg-gray-900 ">
+                                    <div className='absolute z-50 top-6 sm:top-1 pl-3 py-2 w-full'>
                                         <div className="mt-2 flex gap-3 justify-center items-center">
                                             <div className="w-full h-1 bg-gray-500 rounded overflow-hidden">
                                                 <div ref={lineRef} className="h-full bg-white animate-fill w-full"></div>
                                             </div>
 
                                             <button
-                                                className="text-white "
+                                                className="text-white transform transition-transform pr-2"
                                                 onClick={closeModal}
                                             >
                                                 <AiOutlineClose size={20} />
@@ -203,7 +203,7 @@ const Portfolio = ({ darkMode }) => {
                                         <img
                                             src={meme}
                                             alt="Story"
-                                            className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl h-screen rounded-lg pt-[90px] pb-5"
+                                            className="max-w-full sm:max-w-full lg:max-w-full xl:max-w-2xl object-contain  sm:object-fill h-screen rounded-lg pt-[75px] sm:pt-[90px] pb-5"
                                         />
 
                                     </div>
@@ -213,25 +213,25 @@ const Portfolio = ({ darkMode }) => {
                         )}
 
                     </div>
-                    <div className="fixed bottom-5 left-5">
+                    <div className="fixed bottom-2 lg:bottom-5 left-2 sm:left-5">
                         <div
                             className={`p-2 rounded-full transition-opacity duration-300 ease-in-out ${showControls ? 'opacity-100 border border-gray-500' : 'opacity-80'} ${darkMode ? 'text-white' : 'text-black'}`}
                             onMouseEnter={() => setShowControls(true)}
                             onMouseLeave={() => setShowControls(false)}
                         >
                             <button
-                                className={` ${showControls ? 'hidden' : 'block'}  md:p-[6px] rounded-full focus:outline-none`}
+                                className={` ${showControls ? 'hidden' : 'block'}  sm:p-[6px] rounded-full focus:outline-none`}
                                 onClick={() => setShowControls(!showControls)}
                             >
-                                <FaMusic className="text-sm md:text-xl" />
+                                <FaMusic className="text-base sm:text-xl" />
                             </button>
                             {showControls && (
-                                <div className="flex flex-row justify-center items-center space-x-4 ">
+                                <div className="flex flex-row justify-center items-center spacex-x-2 sm:space-x-4 ">
                                     <button
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={togglePlay}
                                     >
-                                        {playing ? <FaPause className="text-[8px] sm:text-lg" /> : <FaPlay className="text-[8px] sm:text-lg" />}
+                                        {playing ? <FaPause className="text-[12px] sm:text-lg" /> : <FaPlay className="text-[12px] sm:text-lg" />}
                                     </button>
                                     <input
                                         type="range"
@@ -267,7 +267,7 @@ const Portfolio = ({ darkMode }) => {
                         transition={{ duration: 0.6 }}
                     >
                         <div className="flex items-center space-x-2">
-                            <h1 className={`text-xl font-Roboto md:text-2xl lg:text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            <h1 className={`text-xl font-Roboto sm:text-2xl lg:text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                                 Prajjwol Shrestha
                             </h1>
                             <div className="relative">
@@ -280,7 +280,7 @@ const Portfolio = ({ darkMode }) => {
                                     <FaEllipsisV />
                                 </motion.button>
                                 {isDropdownOpen && (
-                                    <div className={`mt-2 absolute left-0 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg z-10 w-44`}>
+                                    <div className={`mt-2 absolute right-0 sm:left-0 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg z-10 w-44`}>
                                         <ul className="py-2">
                                             <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                                                 <a
@@ -293,49 +293,52 @@ const Portfolio = ({ darkMode }) => {
                                                 </a>
                                             </li>
                                         </ul>
+
                                     </div>
                                 )}
                             </div>
 
                         </div>
 
-                        <div className='flex gap-10 my-4'>
-                            <h1 className='text-lg'> <span className='font-semibold text-xl'>5 </span>posts</h1>
-                            <h1 className='text-lg'><span className='font-semibold text-xl'>99 </span>followers</h1>
-                            <h1 className='text-lg'><span className='font-semibold text-xl'>99 </span>following</h1>
+                        <div className='flex gap-4 sm:gap-10 my-2 sm:my-4'>
+                            <h1 className='text-sm sm:text-lg'> <span className='font-semibold text-base sm:text-xl'>5 </span>posts</h1>
+                            <h1 className='text-sm sm:text-lg'><span className='font-semibold text-base sm:text-xl'>99 </span>followers</h1>
+                            <h1 className='text-sm sm:text-lg'><span className='font-semibold text-base sm:text-xl'>99 </span>following</h1>
 
                         </div>
 
-                        <div className="flex items-center space-x-2">
-                            <motion.button
-                                whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={handleFollow}
-                                className={`px-2 md:px-8 py-[6px] md:py-2 rounded-md text-sm md:text-md transition-colors duration-300 ${following ? 'bg-gray-100 text-white' : 'bg-blue-500 text-white'}`}
-                            >
-                                {following ? 'Following' : 'Follow'}
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={handleMessage}
-                                className={`px-2 md:px-4 py-[6px] md:py-2 rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
-                            >
-                                <FaPaperPlane className="mr-2" /> Message
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={handleShare}
-                                className={`px-2 md:px-6 py-[6px] md:py-2  rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
-                            >
-                                <FaShareAlt onClick={handleShare} className="mr-[4px]" /> {shareButtonText}
-                            </motion.button>
-                        </div>
+                    </motion.div>
+                    <div className="flex items-center space-x-2">
+                        <motion.button
+                            whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={handleFollow}
+                            className={`px-2 sm:px-8 py-[6px] sm:py-2 rounded-md text-sm sm:text-md transition-colors duration-300 ${following ? 'bg-blue-500 text-white' : 'bg-blue-500 text-white'}`}
+                        >
+                            {following ? 'Following' : 'Follow'}
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={handleMessage}
+                            className={`px-2 sm:px-4 py-[6px] sm:py-2 rounded-md text-sm sm:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
+                        >
+                            <FaPaperPlane className="mr-2" /> Message
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={handleShare}
+                            className={`px-2 sm:px-6 py-[6px] sm:py-2  rounded-md text-sm sm:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
+                        >
+                            <FaShareAlt onClick={handleShare} className="mr-[4px]" /> {shareButtonText}
+                        </motion.button>
+                    </div>
+                    <div>
                         <p className={`mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Bhaktapur, NEPAL <span className="text-sm text-gray-400">(him/he)</span>
                         </p>
-                        <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                        <div className={`text-sm sm:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                             <p className="  leading-relaxed">
                                 Full Stack Web Developer | MERN | NEXT JS | REACT NATIVE |
                                 {!isExpanded && (
@@ -343,10 +346,7 @@ const Portfolio = ({ darkMode }) => {
                                         ....
                                     </span>
                                 )}
-
-
                                 <span onClick={handleToggle} className={isExpanded ? 'hidden' : 'block'}>
-
                                     <button onClick={handleToggle} className="text-blue-500 underline ">Read more</button>
                                 </span>
                                 <span className={isExpanded ? 'block' : 'hidden'}>
@@ -359,33 +359,13 @@ const Portfolio = ({ darkMode }) => {
                                 </span>
                             </p>
                         </div>
-
-                    </motion.div>
+                    </div>
 
                 </div >
             </div >
             <StorySection />
 
-
-            <div className='block sm:hidden'>
-                <div className="mt-4 text-sm md:text-lg flex justify-between px-14 py-4 border-t sm:mr-6 items-center space-x-4 ${darkMode ? 'border-gray-700' : 'border-gray-300'">
-                    <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
-                        <span>5</span>
-                        <span>posts</span>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
-                        <span>6</span>
-                        <span>Projects</span>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
-                        <span>6+</span>
-                        <span>Jobs</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <nav className={`border-t border-b py-3 ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
+            <nav className={`border-t border-b px-2 py-3 ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
                 <div className="overflow-x-auto overflow-y-hidden scrollbar-hidden">
                     <ul className="flex space-x-4 min-w-max h-full justify-center">
                         {sections.map((section, index) => (
@@ -394,11 +374,11 @@ const Portfolio = ({ darkMode }) => {
                                     whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#e2e8f0' }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => setActiveSection(section.title)}
-                                    className={`relative flex items-center space-x-2 py-2 px-4 rounded-md transition ${activeSection === section.title
+                                    className={`relative flex items-center space-x-2 py-1 sm:py-2 px-4 rounded-md transition ${activeSection === section.title
                                         ? darkMode ? 'text-gray-100' : 'text-gray-900'
                                         : darkMode ? 'text-gray-400' : 'text-gray-700'}`}
                                 >
-                                    <section.icon className="text-xl" />
+                                    <section.icon className="text-lg sm:text-xl" />
                                     <span className="hidden sm:inline">{section.title}</span>
                                     {activeSection === section.title && (
                                         <motion.div
@@ -415,10 +395,10 @@ const Portfolio = ({ darkMode }) => {
                 </div>
             </nav>
 
-            <div className="mt-4 pb-8">
+            <div className="mt-4 px-2 pb-8">
                 {renderSectionContent()}
             </div>
-            <footer className={` absolute bottom-0 mx-auto w-full py-4 text-lg border-t text-center ${darkMode ? 'text-gray-50 border-gray-100' : 'text-gray-700 border-gray-900'} sm:hidden`}>
+            <footer className={` absolute bottom-0 mx-auto w-full py-4 text-lg font-semibold border-t text-center ${darkMode ? 'text-gray-200 border-gray-200' : 'text-gray-700 border-gray-900'} sm:hidden`}>
                 <p>{activeSection}</p>
             </footer>
 
